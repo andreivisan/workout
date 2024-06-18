@@ -52,27 +52,35 @@ import time
 
 
 str_to_dig = {
-        "one": 1,
-        "two": 2,
-        "three": 3,
-        "for": 4,
-        "five": 5,
-        "sxix"
-        }
+        "one": "1",
+        "two": "2",
+        "three": "3",
+        "four": "4",
+        "five": "5",
+        "six": "6",
+        "seven": "7",
+        "eight": "8",
+        "nine": "9"
+}
 
 # goes through the document line by line and retrieves the first and the last digit
 def parse_input():
     sum = 0
     with open('input.txt', encoding='utf-8') as f:
         for line in f:
-            #print(line)
-            #print(get_first_and_last_digit_as_number(line))
             sum += get_first_and_last_digit_as_number(line)
     return sum
 
 def get_first_and_last_digit_as_number(file_line: str):
-    digits = [d for d in file_line if d.isdigit()]
-    if len(digits) == 0: return 0
+    filename = 'log.txt'
+    digits = []
+    for index, char in enumerate(file_line):
+        if char.isdigit():
+            digits.append(char)
+        else:
+            for k,v in str_to_dig.items():
+                if k.startswith(char) and file_line[index:index+len(k)] == k:
+                    digits.append(v)
     return int(digits[0] + digits[-1])
 
 def time_parse_inpu():
