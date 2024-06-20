@@ -66,7 +66,7 @@ str_to_dig = {
 # goes through the document line by line and retrieves the first and the last digit
 def parse_input():
     sum = 0
-    with open('input.txt', encoding='utf-8') as f:
+    with open('1.txt', encoding='utf-8') as f:
         for line in f:
             sum += get_first_and_last_digit_as_number(line)
     return sum
