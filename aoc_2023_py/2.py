@@ -35,48 +35,64 @@ impossible because at one point the Elf showed you 20 red cubes at once; similar
 Determine which games would have been possible if the bag had been loaded with only 12 red cubes, 13 green cubes, and 14 blue cubes. What is the sum of 
 the IDs of those games?
 """
-class Game:
-    def __init__(self, game_no, total, blue_no, red_no, green_no):
-        self.game_no = game_no
-        self.total = total
-        self.blue_no = blue_no
-        self.red_no = red_no
-        self.green_no = green_no
+import time
+import re
+
 
 valid_games = []
-ctrl_game = Game(0, 39, 14, 12, 13)
+red_no = 12
+green_no = 13
+blue_no = 14
 
-def parse_input():
+def part_1():
     with open('2.txt', encoding='utf-8') as input_file:
         for line in input_file:
-            game = Game(0, 0, 0, 0, 0)
-            game, cubes = line.split(':')[0], line.split(':')[1]
+            game, draws = line.split(':')[0], line.split(':')[1]
             game_no = int(game.split(' ')[1])
-            print(cubes)
-            cubes_per_color = {
-                "g": 0,
-                "b": 0,
-                "r": 0
-            }
-            for index, ch in enumerate(cubes):
-                if ch.isdigit():
-                    color_pos = index + len(ch) + 1
-                    if cubes[color_pos].strip():
-                        cubes_per_color[cubes[color_pos]] += int(ch)
-            temp_total = cubes_per_color['g'] + cubes_per_color['b'] + cubes_per_color['r']
-            if temp_total < ctrl_game.total:
-                #if cubes_per_color['g'] <= ctrl_game.green_no and cubes_per_color['b'] < ctrl_game.blue_no and cubes_per_color['r'] < ctrl_game.red_no:
+            if is_valid_regex(draws):
                 valid_games.append(game_no)
     print(sum(valid_games))
-            #print(cubes_per_color)
-            #print(temp_total)
-            #extractions = cubes.split(';');
-            #for extraction in extractions:
-                #colors = extraction.split(',')
-                #print(colors)
-            #print(game_no)
-            #print(extractions)
 
+# this solution doesn't scale when the number of cubes has more than 2 digits
+def is_valid(game):
+    for index, ch in enumerate(game):
+        if ch == 'r':
+            red_cubes = int(game[index-3:index-1].strip())
+            if red_cubes > red_no:
+                return False
+        if ch == 'g':
+            green_cubes = int(game[index-3:index-1].strip())
+            if green_cubes > green_no:
+                return False
+        if ch == 'b':
+            blue_cubes = int(game[index-3:index-1].strip())
+            if blue_cubes > blue_no:
+                return False
+
+    return True
+
+# using regex it scales but it is slower
+def is_valid_regex(game):
+    red_pattern = r'(\d+)\s*r(?:ed)?'
+    red_matches = re.findall(red_pattern, game)
+    for red_match in red_matches:
+        if int(red_match) > red_no:
+            return False
+    green_pattern = r'(\d+)\s*g(?:reen)?'
+    green_matches = re.findall(green_pattern, game)
+    for green_match in green_matches:
+        if int(green_match) > green_no:
+            return False
+    blue_pattern = r'(\d+)\s*b(?:lue)?'
+    blue_matches = re.findall(blue_pattern, game)
+    for blue_match in blue_matches:
+        if int(blue_match) > blue_no:
+            return False
+    return True
 
 if __name__ == "__main__":
-    parse_input()
+    start_time = time.time()
+    part_1()
+    end_time = time.time()
+    print(f"time of execution for parse_input is {end_time - start_time} seconds")
+
