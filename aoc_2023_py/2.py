@@ -34,6 +34,30 @@ impossible because at one point the Elf showed you 20 red cubes at once; similar
 
 Determine which games would have been possible if the bag had been loaded with only 12 red cubes, 13 green cubes, and 14 blue cubes. What is the sum of 
 the IDs of those games?
+
+--- Part Two ---
+The Elf says they've stopped producing snow because they aren't getting any water! He isn't sure why the water stopped; however, he can show you how to 
+get to the water source to check it out for yourself. It's just up ahead!
+
+As you continue your walk, the Elf poses a second question: in each game you played, what is the fewest number of cubes of each color that could have 
+been in the bag to make the game possible?
+
+Again consider the example games from earlier:
+
+Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
+Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
+Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red
+Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red
+Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
+In game 1, the game could have been played with as few as 4 red, 2 green, and 6 blue cubes. If any color had even one fewer cube, the game would have been impossible.
+Game 2 could have been played with a minimum of 1 red, 3 green, and 4 blue cubes.
+Game 3 must have been played with at least 20 red, 13 green, and 6 blue cubes.
+Game 4 required at least 14 red, 3 green, and 15 blue cubes.
+Game 5 needed no fewer than 6 red, 3 green, and 2 blue cubes in the bag.
+The power of a set of cubes is equal to the numbers of red, green, and blue cubes multiplied together. The power of the minimum set of cubes in game 1 is 48. 
+In games 2-5 it was 12, 1560, 630, and 36, respectively. Adding up these five powers produces the sum 2286.
+
+For each game, find the minimum set of cubes that must have been present. What is the sum of the power of these sets?
 """
 import time
 import re
@@ -52,6 +76,16 @@ def part_1():
             if is_valid_regex(draws):
                 valid_games.append(game_no)
     print(sum(valid_games))
+
+powers = []
+
+def part_2():
+    with open('2.txt', encoding='utf-8') as input_file:
+        for line in input_file:
+            game, draws = line.split(':')[0], line.split(':')[1]
+            game_no = int(game.split(' ')[1])
+            powers.append(power_regex(draws))
+    print(sum(powers))
 
 # this solution doesn't scale when the number of cubes has more than 2 digits
 def is_valid(game):
@@ -90,9 +124,23 @@ def is_valid_regex(game):
             return False
     return True
 
+def power_regex(game):
+    red_pattern = r'(\d+)\s*r(?:ed)?'
+    red_matches = re.findall(red_pattern, game)
+    max_reds = max([int(red) for red in red_matches])
+    green_pattern = r'(\d+)\s*g(?:reen)?'
+    green_matches = re.findall(green_pattern, game)
+    max_greens = max([int(green) for green in green_matches])
+    blue_pattern = r'(\d+)\s*b(?:lue)?'
+    blue_matches = re.findall(blue_pattern, game)
+    max_blues = max([int(blue) for blue in blue_matches])
+    return max_reds * max_greens * max_blues
+
+
+
 if __name__ == "__main__":
     start_time = time.time()
-    part_1()
+    part_2()
     end_time = time.time()
     print(f"time of execution for parse_input is {end_time - start_time} seconds")
 
