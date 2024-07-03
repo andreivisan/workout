@@ -107,24 +107,16 @@ def is_valid(game):
 
 # using regex it scales but it is slower
 def is_valid_regex(game):
-    red_pattern = r'(\d+)\s*r(?:ed)?'
-    red_matches = re.findall(red_pattern, game)
-    for red_match in red_matches:
-        if int(red_match) > red_no:
-            return False
-    green_pattern = r'(\d+)\s*g(?:reen)?'
-    green_matches = re.findall(green_pattern, game)
-    for green_match in green_matches:
-        if int(green_match) > green_no:
-            return False
-    blue_pattern = r'(\d+)\s*b(?:lue)?'
-    blue_matches = re.findall(blue_pattern, game)
-    for blue_match in blue_matches:
-        if int(blue_match) > blue_no:
-            return False
+    max_reds, max_greens, max_blues = maxes(game)
+    if max_reds > red_no or max_greens > green_no or max_blues > blue_no:
+        return False
     return True
 
 def power_regex(game):
+    max_reds, max_greens, max_blues = maxes(game)
+    return max_reds * max_greens * max_blues
+
+def maxes(game):
     red_pattern = r'(\d+)\s*r(?:ed)?'
     red_matches = re.findall(red_pattern, game)
     max_reds = max([int(red) for red in red_matches])
@@ -134,12 +126,13 @@ def power_regex(game):
     blue_pattern = r'(\d+)\s*b(?:lue)?'
     blue_matches = re.findall(blue_pattern, game)
     max_blues = max([int(blue) for blue in blue_matches])
-    return max_reds * max_greens * max_blues
+    return max_reds, max_greens, max_blues
 
 
 
 if __name__ == "__main__":
     start_time = time.time()
+    part_1()
     part_2()
     end_time = time.time()
     print(f"time of execution for parse_input is {end_time - start_time} seconds")
