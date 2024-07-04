@@ -32,18 +32,30 @@ a symbol and so is a part number; their sum is 4361.
 
 Of course, the actual engine schematic is much larger. What is the sum of all of the part numbers in the engine schematic?
 '''
+import re
 
 input_matrix = []
 
 def part_1():
+    number_pattern = re.compile(r'\d+')
     with open('3.txt', encoding='utf-8') as input_file:
         for index_ln, line in enumerate(input_file):
+            line_len = len(line)
+            i = 0
             cols = [] 
-            for index_ch, ch in enumerate(line):
+            while i < line_len:    
+                ch = line[i]
                 if ch == '.':
                     cols.append(0)
+                    i += 1
                 elif not ch.isdigit():
                     cols.append(1)
+                    i += 1
+                elif ch.isdigit():
+                    match = number_pattern.match(line, i)
+                    if match:
+                        cols.append(int(match.group()))
+                        i += len(match.group())
             input_matrix.append(cols)
         print(input_matrix)       
 
