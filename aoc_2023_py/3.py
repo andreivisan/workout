@@ -40,13 +40,30 @@ directions = [(-1, -1), (-1, 0), (-1, 1),
 def part_1():
     with open('3.txt', encoding='utf-8') as input_file:
         lines = [line.strip() for line in input_file]
+        number = 0
+        valid = False
+        sum = 0
         for row_index, line in enumerate(lines):
             for col_index, ch in enumerate(line):
                 if ch.isdigit():
-                    pass
+                    number = number*10 + int(ch)
+                    if not valid:
+                        valid = is_valid(row_index, col_index, lines)
+                else:
+                    if valid:
+                        sum += number
+                    valid = False
+                    number = 0
+    print(sum)
 
 def is_valid(row, col, lines):
-    for dc 
+    for dr, dc in directions:
+        r = row + dr
+        c = col + dc
+        if 0 <= r < len(lines) and 0 <= c < len(lines[r]):
+            if lines[r][c] != "." and not lines[r][c].isdigit():
+                return True
+    return False
 
 
 if __name__ == "__main__":
