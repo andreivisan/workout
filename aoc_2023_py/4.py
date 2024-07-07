@@ -87,20 +87,48 @@ def part_1():
     result = 0
     with open('4.txt', encoding='utf-8') as input_file:
         for line in input_file:
-            controller = set()
             power = -1 
-            parts = line.split('|')
-            first = parts[0].split(':')[1].strip()
-            second = parts[1].strip()
-            numbers = [int(num) for num in (first + ' ' + second).split()] 
-            initial_len = len(numbers)
-            controller.update(numbers)
-            control_len = len(controller)
-            power = initial_len - control_len
+            power = number_duplicates(line)
             if power > 0:
                 result += 2 ** (power - 1)
     print(result)
 
+storage = {}
+
+def part_2():
+    with open('4.txt', encoding='utf-8') as input_file:
+        lines = input_file.readlines()
+        limit = len(lines)
+        for index, line in enumerate(lines):
+            if index in storage:
+                storage[index] += 1
+            else:
+                storage[index] = 1
+            duplicates = number_duplicates(line)
+            duplicate(index, duplicates, limit)
+        print(sum(storage.values()))
+
+def duplicate(index, duplicates, limit):
+    for i in range(duplicates):
+        idx = index + i + 1
+        if idx < limit:
+            if idx in storage:
+                storage[idx] += storage[index]
+            else:
+                storage[idx] = storage[index]
+
+def number_duplicates(line):
+    controller = set()
+    parts = line.split('|')
+    first = parts[0].split(':')[1].strip()
+    second = parts[1].strip()
+    numbers = [int(num) for num in (first + ' ' + second).split()] 
+    initial_len = len(numbers)
+    controller.update(numbers)
+    control_len = len(controller)
+    return initial_len - control_len
+
+
 
 if __name__ == "__main__":
-    part_1()
+    part_2()
