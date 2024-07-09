@@ -111,7 +111,13 @@ What is the lowest location number that corresponds to any of the initial seed n
 def part_1():
     with open('5.txt', encoding='utf-8') as input_file:
         lines = input_file.readlines()
-    print(extract_values(lines, 'seed-to-soil', 'soil-to-fertilizer'))
+    seed_to_soil = transform_to_touples(extract_values(lines, 'seed-to-soil', 'soil-to-fertilizer'))
+    soil_to_fertilizer = transform_to_touples(extract_values(lines, 'soil-to-fertilizer', 'fertilizer-to-water'))
+    fertilizer_to_water = transform_to_touples(extract_values(lines, 'fertilizer-to-water', 'water-to-light'))
+    water_to_light = transform_to_touples(extract_values(lines, 'water-to-light', 'light-to-temperature'))
+    light_to_temperature = transform_to_touples(extract_values(lines, 'light-to-temperature', 'temperature-to-humidity'))
+    temperature_to_humidity = transform_to_touples(extract_values(lines, 'temperature-to-humidity', 'humidity-to-location'))
+    humidity_to_location = transform_to_touples(extract_values(lines, 'humidity-to-location', 'EOF'))
 
 def extract_values(lines, start, end):
     seed_to_soil_vals = []
@@ -120,13 +126,16 @@ def extract_values(lines, start, end):
         line = line.strip()
         if start in line:
             capture = True
-        elif end in line:
+        elif end is None or end in line:
             capture = False
             return seed_to_soil_vals
-        if capture and "seed-to-soil" not in line:
+        if capture and start not in line:
             if line: 
                 seed_to_soil_vals.append(line)
     return seed_to_soil_vals
+
+def transform_to_touples(entries):
+    return [tuple(map(int, entry.split())) for entry in entries]
 
 
 if __name__ == "__main__":
