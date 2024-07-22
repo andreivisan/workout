@@ -111,13 +111,19 @@ What is the lowest location number that corresponds to any of the initial seed n
 def part_1():
     with open('5.txt', encoding='utf-8') as input_file:
         lines = input_file.readlines()
+    seeds = extract_seeds(lines)
     seed_to_soil = transform_to_touples(extract_values(lines, 'seed-to-soil', 'soil-to-fertilizer'))
+    find_source_position(seeds, seed_to_soil)
     soil_to_fertilizer = transform_to_touples(extract_values(lines, 'soil-to-fertilizer', 'fertilizer-to-water'))
     fertilizer_to_water = transform_to_touples(extract_values(lines, 'fertilizer-to-water', 'water-to-light'))
     water_to_light = transform_to_touples(extract_values(lines, 'water-to-light', 'light-to-temperature'))
     light_to_temperature = transform_to_touples(extract_values(lines, 'light-to-temperature', 'temperature-to-humidity'))
     temperature_to_humidity = transform_to_touples(extract_values(lines, 'temperature-to-humidity', 'humidity-to-location'))
     humidity_to_location = transform_to_touples(extract_values(lines, 'humidity-to-location', 'EOF'))
+
+def extract_seeds(lines):
+    values = lines[0].split(':')[1].split(' ')
+    return [int(num.strip()) for num in values if num.strip().isdigit()]
 
 def extract_values(lines, start, end):
     seed_to_soil_vals = []
@@ -136,6 +142,15 @@ def extract_values(lines, start, end):
 
 def transform_to_touples(entries):
     return [tuple(map(int, entry.split())) for entry in entries]
+
+def find_source_position(source_list, sd_map):
+    for source in source_list:
+        for sd_entry in sd_map:
+            if source >= sd_entry[1] and source <= sd_entry[1] + sd_entry[2]:
+                source_position = source - sd_entry[1] + 1
+                print(f'source position is: {source_position}')
+                destination_position = sd_entry[0] + source_position
+                print(f'destination position is: {destination_position}')
 
 
 if __name__ == "__main__":
