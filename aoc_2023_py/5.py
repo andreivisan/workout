@@ -107,19 +107,27 @@ So, the lowest location number in this example is 35.
 
 What is the lowest location number that corresponds to any of the initial seed numbers?
 '''
+import time
 
 def part_1():
     with open('5.txt', encoding='utf-8') as input_file:
         lines = input_file.readlines()
     seeds = extract_seeds(lines)
     seed_to_soil = transform_to_touples(extract_values(lines, 'seed-to-soil', 'soil-to-fertilizer'))
-    find_source_position(seeds, seed_to_soil)
+    soils = find_source_position(seeds, seed_to_soil)
     soil_to_fertilizer = transform_to_touples(extract_values(lines, 'soil-to-fertilizer', 'fertilizer-to-water'))
+    fertilizers = find_source_position(soils, soil_to_fertilizer)
     fertilizer_to_water = transform_to_touples(extract_values(lines, 'fertilizer-to-water', 'water-to-light'))
+    waters = find_source_position(fertilizers, fertilizer_to_water)
     water_to_light = transform_to_touples(extract_values(lines, 'water-to-light', 'light-to-temperature'))
+    lights = find_source_position(waters, water_to_light)
     light_to_temperature = transform_to_touples(extract_values(lines, 'light-to-temperature', 'temperature-to-humidity'))
+    temperatures = find_source_position(lights, light_to_temperature)
     temperature_to_humidity = transform_to_touples(extract_values(lines, 'temperature-to-humidity', 'humidity-to-location'))
+    humidities = find_source_position(temperatures, temperature_to_humidity)
     humidity_to_location = transform_to_touples(extract_values(lines, 'humidity-to-location', 'EOF'))
+    locations = find_source_position(humidities, humidity_to_location)
+    print(min(locations))
 
 def extract_seeds(lines):
     values = lines[0].split(':')[1].split(' ')
@@ -144,14 +152,26 @@ def transform_to_touples(entries):
     return [tuple(map(int, entry.split())) for entry in entries]
 
 def find_source_position(source_list, sd_map):
+    destinations = []
+    mapped = False
     for source in source_list:
         for sd_entry in sd_map:
             if source >= sd_entry[1] and source <= sd_entry[1] + sd_entry[2]:
-                source_position = source - sd_entry[1] + 1
-                print(f'source position is: {source_position}')
+                mapped = True
+                source_position = source - sd_entry[1]
                 destination_position = sd_entry[0] + source_position
-                print(f'destination position is: {destination_position}')
+                destinations.append(destination_position)
+                break
+        if mapped:
+            mapped = False
+        else:
+            destinations.append(source)
+    return destinations
 
 
 if __name__ == "__main__":
+    start_time = time.time()
     part_1()
+    end_time = time.time()
+    print(f"time of execution for parse_input is {end_time - start_time} seconds")
+
