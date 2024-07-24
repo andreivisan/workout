@@ -97,7 +97,9 @@ Seed number 79 corresponds to soil number 81.
 Seed number 14 corresponds to soil number 14.
 Seed number 55 corresponds to soil number 57.
 Seed number 13 corresponds to soil number 13.
-The gardener and his team want to get started as soon as possible, so they'd like to know the closest location that needs a seed. Using these maps, find the lowest location number that corresponds to any of the initial seeds. To do this, you'll need to convert each seed number through other categories until you can find its corresponding location number. In this example, the corresponding types are:
+The gardener and his team want to get started as soon as possible, so they'd like to know the closest location that needs a seed. Using these maps, find the 
+lowest location number that corresponds to any of the initial seeds. To do this, you'll need to convert each seed number through other categories until you can 
+find its corresponding location number. In this example, the corresponding types are:
 
 Seed 79, soil 81, fertilizer 81, water 81, light 74, temperature 78, humidity 78, location 82.
 Seed 14, soil 14, fertilizer 53, water 49, light 42, temperature 42, humidity 43, location 43.
@@ -106,6 +108,24 @@ Seed 13, soil 13, fertilizer 52, water 41, light 34, temperature 34, humidity 35
 So, the lowest location number in this example is 35.
 
 What is the lowest location number that corresponds to any of the initial seed numbers?
+
+--- Part Two ---
+Everyone will starve if you only plant such a small number of seeds. Re-reading the almanac, it looks like the seeds: line actually describes ranges of seed numbers.
+
+The values on the initial seeds: line come in pairs. Within each pair, the first value is the start of the range and the second value is the length of the range.
+So, in the first line of the example above:
+
+seeds: 79 14 55 13
+This line describes two ranges of seed numbers to be planted in the garden. The first range starts with seed number 79 and contains 14 values: 79, 80, ..., 91, 92. 
+The second range starts with seed number 55 and contains 13 values: 55, 56, ..., 66, 67.
+
+Now, rather than considering four seed numbers, you need to consider a total of 27 seed numbers.
+
+In the above example, the lowest location number can be obtained from seed number 82, which corresponds to soil 84, fertilizer 84, water 84, light 77, temperature 
+45, humidity 46, and location 46. So, the lowest location number is 46.
+
+Consider all of the initial seed numbers listed in the ranges on the first line of the almanac. What is the lowest location number that corresponds to any of the 
+initial seed numbers?
 '''
 import time
 
@@ -113,6 +133,15 @@ def part_1():
     with open('5.txt', encoding='utf-8') as input_file:
         lines = input_file.readlines()
     seeds = extract_seeds(lines)
+    solve_problem(seeds)
+
+def part_2():
+    with open('5.txt', encoding='utf-8') as input_file:
+        lines = input_file.readlines()
+    seeds = extract_seeds_part_2(lines)
+    #solve_problem(seeds)
+    
+def solve_problem(seeds):
     seed_to_soil = transform_to_touples(extract_values(lines, 'seed-to-soil', 'soil-to-fertilizer'))
     soils = find_source_position(seeds, seed_to_soil)
     soil_to_fertilizer = transform_to_touples(extract_values(lines, 'soil-to-fertilizer', 'fertilizer-to-water'))
@@ -132,6 +161,12 @@ def part_1():
 def extract_seeds(lines):
     values = lines[0].split(':')[1].split(' ')
     return [int(num.strip()) for num in values if num.strip().isdigit()]
+
+def extract_seeds_part_2(lines):
+    values = lines[0].split(':')[1].split(' ')
+    num_values = [int(num.strip()) for num in values if num.strip().isdigit()]
+    print(num_values)
+    return []
 
 def extract_values(lines, start, end):
     seed_to_soil_vals = []
@@ -171,7 +206,7 @@ def find_source_position(source_list, sd_map):
 
 if __name__ == "__main__":
     start_time = time.time()
-    part_1()
+    part_2()
     end_time = time.time()
     print(f"time of execution for parse_input is {end_time - start_time} seconds")
 
