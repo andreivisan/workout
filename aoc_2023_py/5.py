@@ -136,9 +136,12 @@ def part_1():
     solve_problem(seeds)
 
 def part_2():
-    with open('5.txt', encoding='utf-8') as input_file:
+    with open('5_test.txt', encoding='utf-8') as input_file:
         lines = input_file.readlines()
-    seeds = extract_seeds_part_2(lines)
+    seed_ranges = extract_seeds_part_2(lines)
+    print(seed_ranges)
+    seed_to_soil_ranges = transform_to_ranges(extract_values(lines, 'seed-to-soil', 'soil-to-fertilizer'))
+    print(seed_to_soil_ranges)
     #solve_problem(seeds)
     
 def solve_problem(seeds):
@@ -163,10 +166,12 @@ def extract_seeds(lines):
     return [int(num.strip()) for num in values if num.strip().isdigit()]
 
 def extract_seeds_part_2(lines):
+    seed_ranges = []
     values = lines[0].split(':')[1].split(' ')
     num_values = [int(num.strip()) for num in values if num.strip().isdigit()]
-    print(num_values)
-    return []
+    for index in range(0, len(num_values), 2):
+        seed_ranges.append((num_values[index], num_values[index] + num_values[index + 1]))
+    return seed_ranges
 
 def extract_values(lines, start, end):
     seed_to_soil_vals = []
@@ -185,6 +190,14 @@ def extract_values(lines, start, end):
 
 def transform_to_touples(entries):
     return [tuple(map(int, entry.split())) for entry in entries]
+
+def transform_to_ranges(entries):
+    ranges = []
+    for entry in entries:
+        nums = list(map(int, entry.split()))
+        ranges.append((nums[0], nums[0] + nums[2]))
+        ranges.append((nums[1], nums[1] + nums[2]))
+    return ranges
 
 def find_source_position(source_list, sd_map):
     destinations = []
