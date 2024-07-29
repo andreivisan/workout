@@ -8,7 +8,7 @@
 
 1. Initialize: Start with two pointers, one at the beginning (low) and one at the end (high) of the array.
 
-2. Middle Point: Calculate the middle point of the current interval.
+2. Middle Point: Calculate the middle point of the current interval. ``` mid = low + (high - low) // 2 ```
 
 3. Comparison:
 
