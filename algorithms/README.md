@@ -173,3 +173,19 @@ Hashing is a fundamental concept in computer science, used extensively for data 
 <b>3. Security Concerns:</b>
 
 Hash functions should be resistant to hash collisions to prevent attacks like hash flooding, where an adversary intentionally causes many collisions to degrade the performance of a hash table.
+
+### Two Pointers
+
+#### Concept:
+
+* Two pointers is a technique used to iterate through an array or list with two variables pointing to different indices.
+
+* Common use cases include problems involving pairs, triplets, or partitions within an array.
+
+#### Applications:
+
+* Sorted Arrays: Finding pairs that sum to a specific target.
+
+* Linked Lists: Detecting cycles, finding the middle element.
+
+* String Manipulation: Palindrome checking, string reversal.
