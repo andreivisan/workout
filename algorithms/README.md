@@ -189,3 +189,26 @@ Hash functions should be resistant to hash collisions to prevent attacks like ha
 * Linked Lists: Detecting cycles, finding the middle element.
 
 * String Manipulation: Palindrome checking, string reversal.
+
+[Two Pointers - Two Sum 2](two_sum_2.py)
+
+### Sliding Window
+
+#### Concept:
+
+* The sliding window technique involves maintaining a window that slides over the data structure to optimize the solution's performance.
+
+* It is particularly useful for problems involving subarrays, substrings, or sequences.
+
+#### Types of Sliding Windows:
+
+1. Fixed-Size Window: The window size remains constant.
+
+2. Dynamic-Size Window: The window size can change based on conditions.
+
+#### Applications:
+
+* Subarray Problems: Maximum sum subarray, smallest subarray with a given sum.
+
+* Substring Problems: Longest substring without repeating characters.
+
