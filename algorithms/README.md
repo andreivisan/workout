@@ -2,6 +2,42 @@
 
 ## Arrays 
 
+### Dynamic Arrays
+
+A dynamic array is a data structure that provides a way to store elements in a contiguous block of memory but can resize itself to accommodate new elements. This flexibility in size makes dynamic arrays more versatile than static arrays, which have a fixed size.
+
+#### Key Characteristics
+
+1. Contiguous Memory: Elements are stored in contiguous memory locations, allowing for efficient access by index.
+
+2. Dynamic Resizing: The array can grow or shrink as needed, though resizing usually involves some overhead.
+
+#### How Dynamic Arrays Work
+
+1. Initial Size and Capacity:
+
+* A dynamic array starts with a certain initial capacity. The capacity is the total number of elements the array can hold before needing to resize.
+
+2. Adding Elements:
+
+* As elements are added, they are placed in the available slots of the array.
+
+* When the array reaches its capacity, it resizes itself to accommodate more elements.
+
+3. Resizing:
+
+* When the current array is full and a new element needs to be added, the array allocates a new block of memory, typically double the size of the current capacity.
+
+* All existing elements are copied to the new memory block, and the old memory block is freed.
+
+4. Efficiency:
+
+* Access: O(1) time complexity for accessing elements by index.
+
+* O(1) average time complexity for adding elements, although individual additions may sometimes require O(n) time due to resizing.
+
+* Resizing Cost: The amortized cost of resizing is spread out over many insertions, making the average time per insertion O(1).
+
 ### Binary Search
 
 #### Steps of Binary Search
