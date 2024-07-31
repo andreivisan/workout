@@ -38,6 +38,8 @@ A dynamic array is a data structure that provides a way to store elements in a c
 
 * Resizing Cost: The amortized cost of resizing is spread out over many insertions, making the average time per insertion O(1).
 
+[Dynamic Array](dynamic_array.py)
+
 ### Binary Search
 
 #### Steps of Binary Search
