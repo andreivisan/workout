@@ -1,6 +1,6 @@
 # Algorithms workouts
 
-## Day 1
+## Arrays 
 
 ### Binary Search
 
@@ -22,6 +22,46 @@
 
 [Binary Search](binary_search.py)
 
+### Two Pointers
+
+#### Concept:
+
+* Two pointers is a technique used to iterate through an array or list with two variables pointing to different indices.
+
+* Common use cases include problems involving pairs, triplets, or partitions within an array.
+
+#### Applications:
+
+* Sorted Arrays: Finding pairs that sum to a specific target.
+
+* Linked Lists: Detecting cycles, finding the middle element.
+
+* String Manipulation: Palindrome checking, string reversal.
+
+[Two Pointers - Two Sum 2](two_sum_2.py)
+
+### Sliding Window
+
+#### Concept:
+
+* The sliding window technique involves maintaining a window that slides over the data structure to optimize the solution's performance.
+
+* It is particularly useful for problems involving subarrays, substrings, or sequences.
+
+#### Types of Sliding Windows:
+
+1. Fixed-Size Window: The window size remains constant.
+
+2. Dynamic-Size Window: The window size can change based on conditions.
+
+#### Applications:
+
+* Subarray Problems: Maximum sum subarray, smallest subarray with a given sum.
+
+* Substring Problems: Longest substring without repeating characters.
+
+
+## Sorting
 
 ### Bubble Sort
 
@@ -44,7 +84,7 @@
 [Bubble Sort](bubble_sort.py)
 
 
-### Recursion
+## Recursion
 
 #### Intro
 
@@ -84,9 +124,7 @@ A recursive function typically has two main components:
 [Fibonacci](recursion_fibonacci.py)
 
 
-## Day 2
-
-### Hashing
+## Hashing
 
 Hashing is a fundamental concept in computer science, used extensively for data storage and retrieval. At a lower level, hashing involves intricate memory management and data manipulation. Let's delve into what happens in memory when hashing is implemented.
 
@@ -174,41 +212,5 @@ Hashing is a fundamental concept in computer science, used extensively for data 
 
 Hash functions should be resistant to hash collisions to prevent attacks like hash flooding, where an adversary intentionally causes many collisions to degrade the performance of a hash table.
 
-### Two Pointers
 
-#### Concept:
-
-* Two pointers is a technique used to iterate through an array or list with two variables pointing to different indices.
-
-* Common use cases include problems involving pairs, triplets, or partitions within an array.
-
-#### Applications:
-
-* Sorted Arrays: Finding pairs that sum to a specific target.
-
-* Linked Lists: Detecting cycles, finding the middle element.
-
-* String Manipulation: Palindrome checking, string reversal.
-
-[Two Pointers - Two Sum 2](two_sum_2.py)
-
-### Sliding Window
-
-#### Concept:
-
-* The sliding window technique involves maintaining a window that slides over the data structure to optimize the solution's performance.
-
-* It is particularly useful for problems involving subarrays, substrings, or sequences.
-
-#### Types of Sliding Windows:
-
-1. Fixed-Size Window: The window size remains constant.
-
-2. Dynamic-Size Window: The window size can change based on conditions.
-
-#### Applications:
-
-* Subarray Problems: Maximum sum subarray, smallest subarray with a given sum.
-
-* Substring Problems: Longest substring without repeating characters.
 
