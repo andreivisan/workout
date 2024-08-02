@@ -99,6 +99,43 @@ A dynamic array is a data structure that provides a way to store elements in a c
 * Substring Problems: Longest substring without repeating characters.
 
 
+## Stacks
+
+A stack is a fundamental data structure in computer science that operates on a Last In, First Out (LIFO) principle. This means that the last element added to the stack will be the first one to be removed. Let's explore stacks from both a software perspective and a deeper, hardware-level understanding.
+
+### Basic Operations
+
+1. Push: Adds an element to the top of the stack.
+
+2. Pop: Removes and returns the top element from the stack.
+
+3. Peek (or Top): Returns the top element without removing it.
+
+4. isEmpty: Checks if the stack is empty.
+
+### Summary
+
+* Software Level: Stacks are used for function call management, expression evaluation, and more. They can be implemented using arrays or linked lists.
+
+* Hardware Level: Stacks are managed using a stack pointer and are critical for managing control flow and function calls. The stack is implemented in RAM and operates on binary data at the hardware level.
+
+### How Stacks work in memory
+
+Example for a function call to add 2 numbers:
+
+1. Parameters and return address are pushed onto the stack by the caller.
+
+2. The callee function saves the current frame pointer and sets up a new frame pointer.
+
+3. The function body accesses parameters and local variables relative to the frame pointer.
+
+4. Upon completion, the function cleans up the stack and restores the previous frame pointer and return address.
+
+5. Control is transferred back to the caller using the return address.
+
+[How Stacks Work in Memory](stack_visualisation.py)
+
+
 ## Sorting
 
 ### Bubble Sort
