@@ -90,3 +90,4 @@ Temporary Items
 /.pytest_cache
 .env
 .env.local
+/algorithms/venv
