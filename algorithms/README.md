@@ -138,6 +138,55 @@ Example for a function call to add 2 numbers:
 [LeetCode Valid Parentheses Problem](valid_parentheses.py)
 
 
+## Singly Linked Lists
+
+A singly linked list is a data structure that consists of a sequence of elements called nodes. Each node contains two components:
+
+1. Data: The value stored in the node.
+
+2. Next: A reference (or pointer) to the next node in the sequence.
+
+In a singly linked list, each node points to the next node in the list, forming a chain of nodes. The list starts with a head node, and the end of the list is marked by a node that points to None (null reference), indicating there are no further nodes.
+
+### Key Operations
+
+1. Insertion: Adding a new node to the list.
+
+2. Deletion: Removing a node from the list.
+
+3. Traversal: Accessing each node's data in the list.
+
+4. Search: Finding a node with a specific value.
+
+### Key Points
+
+1. Node: The basic unit of a linked list, containing data and a pointer to the next node.
+
+2. Head: The first node in the list.
+
+3. Traversal: Start from the head and follow the next pointers to visit each node.
+
+4. Insertion: Can be done at the beginning (prepend), end (append), or between nodes.
+
+5. Deletion: Involves updating the next pointer of the previous node to skip the deleted node.
+
+### Advantages and Disadvantages
+
+#### Advantages:
+
+* Dynamic Size: Can easily grow and shrink as elements are added or removed.
+
+* Efficient Insertions/Deletions: No need to shift elements as in arrays.
+
+#### Disadvantages:
+
+* Memory Overhead: Requires extra memory for storing pointers.
+
+* Sequential Access: Requires traversal from the head to access elements, making it slower than random access in arrays.
+
+Singly linked lists are foundational data structures used in various applications, including stacks, queues, and graph representations.
+
+
 ## Sorting
 
 ### Bubble Sort
