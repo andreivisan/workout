@@ -135,6 +135,8 @@ Example for a function call to add 2 numbers:
 
 [How Stacks Work in Memory](stack_visualisation.py)
 
+[LeetCode Valid Parentheses Problem](valid_parentheses.py)
+
 
 ## Sorting
 

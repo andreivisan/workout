@@ -7,12 +7,12 @@ def is_valid(str):
         "]": "[",
         "}": "{",
     }
-    for ch in str :
-        if stack and ch in storage.keys():
-            if stack[-1] == storage[ch]:
+    for ch in str:
+        if ch in storage.keys() and stack and stack[-1] == storage[ch]:
                 stack.pop()
-            else: 
-                stack.append(storage[ch])
+        else:
+            stack.append(ch) 
+
     return len(stack) == 0
 
 
