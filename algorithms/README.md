@@ -187,6 +187,7 @@ In a singly linked list, each node points to the next node in the list, forming 
 Singly linked lists are foundational data structures used in various applications, including stacks, queues, and graph representations.
 
 [Singly Linked List implementation](singly_linked_list.py)
+
 [Reverse Singly Linked List](reverse_linked_list.py)
 
 
