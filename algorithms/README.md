@@ -190,6 +190,8 @@ Singly linked lists are foundational data structures used in various application
 
 [Reverse Singly Linked List](reverse_linked_list.py)
 
+[Merge Two Sorted Linked Lists](merge_2_sorted_lists.py)
+
 
 ## Sorting
 
