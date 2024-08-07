@@ -193,6 +193,31 @@ Singly linked lists are foundational data structures used in various application
 [Merge Two Sorted Linked Lists](merge_2_sorted_lists.py)
 
 
+## Doubly Linked Lists
+
+A doubly-linked list is a type of linked list in which each node contains three components:
+
+1. Data: The value stored in the node.
+
+2. Next: A reference (or pointer) to the next node in the sequence.
+
+3. Prev: A reference (or pointer) to the previous node in the sequence.
+
+### Key Operations
+
+1. Insertion: Adding a new node to the list.
+
+2. Deletion: Removing a node from the list.
+
+3. Traversal: Accessing each node's data in the list.
+
+4. Search: Finding a node with a specific value.
+
+### Implementation in Python
+
+[Doubly Linked List](doubly_linked_list.py)
+
+
 ## Sorting
 
 ### Bubble Sort
