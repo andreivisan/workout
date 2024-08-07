@@ -217,6 +217,30 @@ A doubly-linked list is a type of linked list in which each node contains three 
 
 [Doubly Linked List](doubly_linked_list.py)
 
+### Key Points
+
+* Bidirectional Traversal: Allows traversal in both directions (forward and backward).
+
+* Memory Overhead: Requires extra memory for storing pointers to both the next and previous nodes.
+
+* Efficient Insertions/Deletions: More efficient than singly linked lists for operations that involve both ends of the list or when you need to delete nodes, as you have access to the previous node.
+
+### Advantages and Disadvantages
+
+#### Advantages
+
+* Bidirectional Traversal: Easier to navigate back and forth through the list.
+
+* Flexible Operations: Insertions and deletions are more flexible compared to singly linked lists.
+
+#### Disadvantages
+
+* Memory Usage: More memory overhead due to the extra prev pointer.
+
+* Complexity: Slightly more complex to implement and maintain compared to singly linked lists.
+
+Understanding doubly linked lists is fundamental for many advanced data structures and algorithms. They are used in various applications, including navigation systems (e.g., browser history), and play a crucial role in the implementation of more complex data structures like balanced trees and graph representations.
+
 
 ## Sorting
 
