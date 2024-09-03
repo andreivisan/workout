@@ -77,10 +77,10 @@ class DoublyLinkedList():
                 new_node.prev = previous_node
                 new_node.next = current_node
                 current_node.prev = new_node
+                self.size += 1
                 return
             iter += 1
             current_node = current_node.next
-        self.size += 1
 
     def delete(self, data):
         current_node = self.head
@@ -128,35 +128,6 @@ class DoublyLinkedList():
 
 if __name__ == "__main__":
     dll = DoublyLinkedList()
-    dll.prepend(1)
-    dll.append(3)
-    dll.add_at_index(1,2)
+    dll.prepend(4)
     dll.print_list()
-    print(dll.get(1))
-    dll.delete_at_index(1)
-    dll.print_list()
-    print(dll.size)
-    print(dll.get(1))
-    # dll.prepend(7)
-    # dll.prepend(2)
-    # dll.prepend(1)
-    # dll.add_at_index(3,0)
-    # dll.delete_at_index(2)
-    # dll.print_list()
-    # print(dll.size)
-    # dll.append(1)
-    # dll.append(2)
-    # dll.append(3)
-    # dll.prepend(0)
-    # print(f"Get element at index 1 {dll.get(1)}")
-    # print("List after appending and prepending:")
-    # dll.print_list()
-    # dll.delete(2)
-    # print("List after deleting 2:")
-    # dll.print_list()
-    # dll.add_at_index(2, 2)
-    # print("List after readding 2")
-    # dll.print_list()
-    # dll.delete_at_index(3)
-    # print("List after deleting at index 3")
-    # dll.print_list()
+    
