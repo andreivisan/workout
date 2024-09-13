@@ -242,6 +242,49 @@ A doubly-linked list is a type of linked list in which each node contains three 
 Understanding doubly linked lists is fundamental for many advanced data structures and algorithms. They are used in various applications, including navigation systems (e.g., browser history), and play a crucial role in the implementation of more complex data structures like balanced trees and graph representations.
 
 
+## Queues
+
+### Definition
+
+A queue is a fundamental data structure in computer science that operates on a First-In-First-Out (FIFO) principle. This means that the first element added to the queue will be the first one to be removed, much like people standing in a line at a supermarket checkout.
+
+### Key characteristics
+
+- FIFO Ordering: Elements are processed in the order they arrive.
+
+- Linear Data Structure: Elements are arranged sequentially.
+
+- Two Primary Operations:
+    
+    - Enqueue: Add an element to the back (rear) of the queue.
+
+    - Dequeue: Remove an element from the front of the queue.
+
+### Implementation
+
+Queues can be implemented using:
+
+- Arrays or Lists
+
+- Linked Lists
+
+- Stacks (for advanced implementations)
+
+- Built-in data structures (like collections.deque in Python)
+
+### Application of Queues
+
+1. CPU Scheduling: Managing processes in operating systems.
+
+2. Breadth-First Search (BFS): Traversing graphs and trees level by level.
+
+3. Handling Interrupts: Managing asynchronous data in systems.
+
+4. Printer Queue: Managing documents to be printed.
+
+5. Simulation of Real-World Queues: Modeling lines in banks, supermarkets, etc.
+
+
 ## Sorting
 
 ### Bubble Sort
@@ -292,7 +335,7 @@ A recursive function typically has two main components:
 
 2. Return Cached Result: If the result is found in the cache, return it immediately, avoiding redundant computations.
 
-3. Compute and Cache Result: If the result is not in the cache, compute it and store the result in the cache before returning it.
+3. Compute and Cache Result: If the result is not in the cache, compute it and store the result in the cache before returning it. 
 
 ##### Steps for Implementing Memoization
 
