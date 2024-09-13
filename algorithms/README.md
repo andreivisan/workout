@@ -284,6 +284,8 @@ Queues can be implemented using:
 
 5. Simulation of Real-World Queues: Modeling lines in banks, supermarkets, etc.
 
+[Stack Using Queues](stack_using_queues.py)
+
 
 ## Sorting
 
