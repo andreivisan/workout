@@ -349,6 +349,20 @@ A recursive function typically has two main components:
 
 [Fibonacci](recursion_fibonacci.py)
 
+Something to come back later to is the number of ways of climbing n stairs knowing that we can take 1 step or 2 steps at a time.
+
+The easiest way to understand is by using a decision tree
+
+                         n=4
+                      /       \
+                   n=3        n=2
+                  /   \       /   \
+               n=2   n=1    n=1   n=0
+              /  \   /  \    / \
+           n=1  n=0 n=0 n=-1 n=0 n=-1
+          / \ 
+        n=0 n=-1
+
 
 ## Hashing
 
