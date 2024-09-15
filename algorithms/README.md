@@ -363,6 +363,8 @@ The easiest way to understand is by using a decision tree
           / \ 
         n=0 n=-1
 
+[Climbing Stairs](climbing_stairs.py)
+
 
 ## Hashing
 
