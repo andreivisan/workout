@@ -347,6 +347,30 @@ A recursive function typically has two main components:
 
 3. Store the Result in Cache: After computing the result, store it in the cache with the corresponding input as the key.
 
+#### How to Think Recursively
+
+1. Identify the Base Case:
+
+    - Determine the simplest instance of the problem that can be solved directly.
+
+    - Ensure the base case will eventually be reached to prevent infinite recursion.
+
+2. Define the Recursive Case:
+
+    - Figure out how to reduce the problem size.
+
+    - Decide how the function will call itself with a smaller or simpler input.
+
+3. Assume the Recursive Call Works:
+
+    - Trust that the function works correctly for the smaller problem.
+
+    - Focus on using the result of the recursive call to solve the current problem.
+
+4. Combine Results if Necessary:
+
+    - If the problem requires combining results from multiple recursive calls, plan how to do so.
+
 [Fibonacci](recursion_fibonacci.py)
 
 Something to come back later to is the number of ways of climbing n stairs knowing that we can take 1 step or 2 steps at a time.
