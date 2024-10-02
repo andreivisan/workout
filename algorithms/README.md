@@ -390,6 +390,139 @@ The easiest way to understand is by using a decision tree
 [Climbing Stairs](climbing_stairs.py)
 
 
+## Sorting
+
+### Insertion Sort
+
+#### What Is Insertion Sort?
+
+Insertion sort is a simple and intuitive sorting algorithm that builds the final sorted array (or list) one item at a time. It works similarly to how you might sort playing cards in your hands:
+
+- You start with an empty left hand (the sorted subarray) and the cards face down on the table (the unsorted subarray).
+
+- You then remove one card at a time from the table and insert it into the correct position in your hand.
+
+#### How Does Insertion Sort Work?
+
+The algorithm divides the array into a sorted and an unsorted part:
+
+1. Sorted Subarray: Initially contains the first element of the array.
+
+2. Unsorted Subarray: Contains the rest of the elements.
+
+Algorithm Steps:
+
+1. Start with the second element (index 1) of the array.
+
+2. Select the current element (called the "key") to be inserted into the sorted subarray.
+
+3. Compare the key with each element in the sorted subarray, moving from right to left.
+
+4. Shift all elements in the sorted subarray that are greater than the key to one position ahead.
+
+5. Insert the key into the correct position in the sorted subarray.
+
+6. Repeat steps 2-5 for all elements in the unsorted subarray.
+
+#### Example Walkthrough
+
+Let's sort the following array step by step:
+
+Initial Array: [5, 2, 9, 1, 5, 6]
+
+Step 1: Consider 5 at index 0 as the sorted subarray.
+
+Iteration 1 (i = 1, Key = 2):
+
+- Key: 2
+
+- Compare with 5:
+
+    - Since 2 < 5, shift 5 to the right.
+
+- Insert 2 at index 0.
+
+- Array: [2, 5, 9, 1, 5, 6]
+
+Iteration 2 (i = 2, Key = 9):
+
+- Key: 9
+
+- Compare with 5:
+
+    - Since 9 >= 5, no shifting is needed.
+
+- Insert 9 at index 2 (remains in place).
+
+- Array: [2, 5, 9, 1, 5, 6]
+
+Iteration 3 (i = 3, Key = 1):
+
+- Key: 1
+
+- Compare with 9:
+
+    - Since 1 < 9, shift 9 to the right.
+
+- Compare with 5:
+
+    - Since 1 < 5, shift 5 to the right.
+
+- Compare with 2:
+
+    - Since 1 < 2, shift 2 to the right.
+
+- Insert 1 at index 0.
+
+- Array: [1, 2, 5, 9, 5, 6]
+
+Iteration 4 (i = 4, Key = 5):
+
+- Key: 5
+
+- Compare with 9:
+
+    - Since 5 < 9, shift 9 to the right.
+
+- Compare with 5:
+
+    - Since 5 == 5, no further shifting.
+
+- Insert 5 at index 3.
+
+- Array: [1, 2, 5, 5, 9, 6]
+
+Iteration 5 (i = 5, Key = 6):
+
+- Key: 6
+
+- Compare with 9:
+
+    - Since 6 < 9, shift 9 to the right.
+
+- Compare with 5:
+
+    - Since 6 >= 5, no further shifting.
+
+- Insert 6 at index 4.
+
+- Array: [1, 2, 5, 5, 6, 9]
+
+Final Sorted Array: [1, 2, 5, 5, 6, 9]
+
+#### Characteristics of Insertion Sort
+
+- Time Complexity:
+
+    - Best Case: O(n) when the array is already sorted.
+
+    - Average and Worst Case: O(n²) due to the nested loops of shifting elements.
+
+- Space Complexity:
+
+    - O(1), as it is an in-place sorting algorithm.
+
+
 ## Hashing
 
 Hashing is a fundamental concept in computer science, used extensively for data storage and retrieval. At a lower level, hashing involves intricate memory management and data manipulation. Let's delve into what happens in memory when hashing is implemented.
