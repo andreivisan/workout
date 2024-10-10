@@ -1,23 +1,14 @@
 #!/usr/bin/env python3
 
-def switch(array: list[int], index: int, sorted_index: int):
-    temp = array[index]
-    array[index] = array[sorted_index]
-    array[sorted_index] = temp
-
 def insertion_sort(array: list[int]) -> list[int]:
     n = len(array)
-    for i in range(n-1):
-        prev_index = i
-        key_index = i + 1
-        value_2ct = array[prev_index]
-        key = array[key_index]
-        while key < value_2ct and key_index >= 0 and prev_index >= 0:
-            switch(array, key_index, prev_index)
-            key_index -= 1
-            prev_index -=1
-            value_2ct = array[prev_index]
-            key = array[key_index]
+    for i in range(1, n):
+        key = array[i]
+        j = i - 1
+        while j >= 0 and array[j] > key:
+            array[j+1] = array[j]
+            j -= 1
+        array[j+1] = key
     return array
 
 def insert_sorted(array: list[int], val: int, start: int, end: int) -> list[int]:
@@ -39,5 +30,3 @@ if __name__ == "__main__":
     array = [8, 4, 2, 9, 5]
     print(insertion_sort(array))
     print(insert_sorted(array, 11, 0, len(array) - 1))
-
-        
