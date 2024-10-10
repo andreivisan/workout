@@ -522,6 +522,8 @@ Final Sorted Array: [1, 2, 5, 5, 6, 9]
 
     - O(1), as it is an in-place sorting algorithm.
 
+[Insertion Sort](insertion_sort.py)
+
 
 ## Hashing
 
