@@ -524,6 +524,208 @@ Final Sorted Array: [1, 2, 5, 5, 6, 9]
 
 [Insertion Sort](insertion_sort.py)
 
+### Merge Sort
+
+#### What Is Merge Sort?
+
+Merge Sort is an efficient, general-purpose, comparison-based sorting algorithm. It follows the Divide and Conquer paradigm, which involves recursively breaking down a problem into two or more subproblems of the same or related type until they become simple enough to be solved directly. Then, the solutions to the subproblems are combined to solve the original problem.
+
+#### How Does Merge Sort Work?
+
+Merge Sort works by dividing the unsorted list into smaller sublists until each sublist contains a single element (which is inherently sorted), and then merging those sublists to produce new sorted sublists until there is only one sublist remaining—this will be the sorted list.
+
+#### Example Walkthrough
+
+Initial Array: [38, 27, 43, 3, 9, 82, 10]
+
+1. Divide Phase
+
+- Recursively Split the List:
+
+    - The original list is divided into two approximately equal halves.
+
+    - This process continues recursively for each sublist until sublists of size one are achieved.
+
+    1. First Split:
+
+        - Split the array into two halves:
+        
+        - Left Half: [38, 27, 43]
+
+        - Right Half: [3, 9, 82, 10]
+
+    2. Split Left Half [38, 27, 43]:
+
+        - Split into [38] and [27, 43]
+
+        - [38] is a single-element list (base case).
+
+    3. Split [27, 43]:
+
+        - Split into [27] and [43]
+
+        - Both are single-element lists (base case).
+
+    4. Split Right Half [3, 9, 82, 10]:
+
+        - Split into [3, 9] and [82, 10]
+
+    5. Split [3, 9]:
+
+        - Split into [3] and [9]
+
+        - Both are single-element lists (base case).
+
+    6. Split [82, 10]:
+
+        - Split into [82] and [10]
+
+        - Both are single-element lists (base case).
+
+- Base Case:
+
+    - A list with a single element is considered sorted, so the recursion stops.
+
+2. Conquer Phase
+
+- Since the base case sublists are sorted, the algorithm now needs to merge them.
+
+- (Conquer & Merge)
+
+    1. Merge [27] and [43]:
+
+        - Compare 27 and 43.
+
+        - Since 27 < 43, the merged list is [27, 43].
+
+    2. Merge [38] and [27, 43]:
+
+        - Compare 38 and 27.
+        
+            - 27 < 38, so place 27 in the merged list.
+
+        - Compare 38 and 43.
+
+            - 38 < 43, so place 38 in the merged list.
+
+        - Place the remaining 43 in the merged list.
+
+        - Merged list: [27, 38, 43]
+
+    3. Merge [3] and [9]:
+
+        - Compare 3 and 9.
+
+        - Since 3 < 9, the merged list is [3, 9].
+
+    4. Merge [82] and [10]:
+
+        - Compare 82 and 10.
+
+        - Since 10 < 82, the merged list is [10, 82].
+
+    5. Merge [3, 9] and [10, 82]:
+
+        - Compare 3 and 10.
+
+            - 3 < 10, so place 3 in the merged list.
+
+        - Compare 9 and 10.
+
+            - 9 < 10, so place 9 in the merged list.
+
+        - Compare next element (10) since no elements are left in [3, 9].
+
+            - Place 10 in the merged list.
+
+        - Place the remaining 82 in the merged list.
+
+        - Merged list: [3, 9, 10, 82]
+
+    6. Final Merge of [27, 38, 43] and [3, 9, 10, 82]:
+
+        - Compare 27 and 3.
+
+            - 3 < 27, so place 3 in the merged list.
+
+        - Compare 27 and 9.
+
+            - 9 < 27, so place 9 in the merged list.
+
+        - Compare 27 and 10.
+
+            - 10 < 27, so place 10 in the merged list.
+
+        - Compare 27 and 82.
+
+            - 27 < 82, so place 27 in the merged list.
+
+        - Compare 38 and 82.
+
+            - 38 < 82, so place 38 in the merged list.
+
+        - Compare 43 and 82.
+
+            - 43 < 82, so place 43 in the merged list.
+
+        - Place the remaining 82 in the merged list.
+
+        - Final Sorted Array: [3, 9, 10, 27, 38, 43, 82]
+
+3. Merge Phase
+
+- Merge Sorted Sublists:
+
+    - Take two sorted sublists and merge them into one sorted list.
+
+    - Compare the elements at the beginning of each sublist.
+
+    - Move the smaller element into the new list.
+
+    - Repeat the comparison and movement until all elements are merged.
+
+```bash
+
+Original Array: [38, 27, 43, 3, 9, 82, 10]
+
+Divide Phase:
+- Split into [38, 27, 43] and [3, 9, 82, 10]
+- Further split [38, 27, 43] into [38] and [27, 43]
+- Split [27, 43] into [27] and [43]
+- Split [3, 9, 82, 10] into [3, 9] and [82, 10]
+- Split [3, 9] into [3] and [9]
+- Split [82, 10] into [82] and [10]
+
+Conquer and Merge Phase:
+- Merge [27] and [43] into [27, 43]
+- Merge [38] and [27, 43] into [27, 38, 43]
+- Merge [3] and [9] into [3, 9]
+- Merge [82] and [10] into [10, 82]
+- Merge [3, 9] and [10, 82] into [3, 9, 10, 82]
+- Merge [27, 38, 43] and [3, 9, 10, 82] into [3, 9, 10, 27, 38, 43, 82]
+
+Final Sorted Array: [3, 9, 10, 27, 38, 43, 82]
+
+```
+
+#### Characteristics of Merge Sort
+
+- Stable Sorting Algorithm:
+
+    - Merge Sort maintains the relative order of equal elements.
+
+- Not an In-Place Sort:
+
+    - It requires additional memory for the temporary arrays used during the merging process.
+
+- Divide and Conquer:
+
+    - The algorithm's efficiency comes from dividing the problem into smaller subproblems, solving them independently, and combining their solutions.
+
+- Consistent Performance:
+
+    - Unlike some other algorithms, Merge Sort's performance doesn't degrade with certain input patterns.
+
 
 ## Hashing
 
