@@ -726,6 +726,306 @@ Final Sorted Array: [3, 9, 10, 27, 38, 43, 82]
 
     - Unlike some other algorithms, Merge Sort's performance doesn't degrade with certain input patterns.
 
+[Merge Sort](merge_sort.py)
+
+### Quick Sort
+
+#### What Is Quick Sort?
+
+Quick Sort is an efficient, in-place sorting algorithm that follows the Divide and Conquer paradigm. Developed by Tony Hoare in 1959, it is one of the most widely used sorting algorithms due to its average-case efficiency and in-place sorting capability.
+
+#### How Does Quick Sort Work?
+
+Quick Sort works by selecting a pivot element from the array and partitioning the other elements into two sub-arrays:
+
+1. Elements less than the pivot
+
+2. Elements greater than the pivot
+
+The sub-arrays are then sorted recursively. This can be done in-place, requiring minimal additional memory space.
+
+#### Example Walkthrough
+
+Partitioning in Quick Sort
+
+During the partitioning phase, the goal is to rearrange the array such that:
+
+- All elements less than or equal to the pivot are on the left side.
+
+- All elements greater than the pivot are on the right side.
+
+- The pivot is placed in its correct sorted position.
+
+To achieve this, we use two pointers or indices as we iterate through the array:
+
+- Index i: Keeps track of the position where the next smaller or equal element should be placed.
+
+- Index j: Iterates through the array comparing elements with the pivot.
+
+Step-by-Step Partitioning Process
+
+Let's break down the steps:
+
+1. Initialize Pointers:
+
+    - Pivot: The element chosen as the pivot (e.g., the last element arr[high]).
+
+    - i: Initialized to low - 1. This means if low = 0, then i = -1.
+
+2. Iterate Through the Array:
+
+    - For each element from low to high - 1, do the following:
+
+        - If arr[j] <= pivot:
+            - Increment i by 1 (i += 1).
+            
+            - Swap arr[i] with arr[j].
+            
+            - This places the smaller element at index i.
+
+3. Final Swap to Place Pivot:
+
+    - After the iteration, i points to the last element that is less than or equal to the pivot.
+
+    - Swap arr[i+1] with arr[high] (the pivot).
+
+        - This places the pivot immediately after all smaller elements.
+
+        - Now, the pivot is in its correct sorted position.
+
+Why Swap arr[i+1] with Pivot?
+
+Reasoning:
+
+- Position of Smaller Elements:
+
+    - After the iteration, all elements from arr[low] to arr[i] are less than or equal to the pivot.
+
+- Position of Larger Elements:
+
+    - Elements from arr[i+1] to arr[high - 1] are greater than the pivot.
+
+- Pivot Placement:
+
+    - The pivot is at arr[high].
+
+    - To place the pivot between the smaller and larger elements, we swap it with arr[i+1].
+
+Outcome:
+
+- Elements arr[low] to arr[i]: Less than or equal to pivot.
+
+- arr[i+1]: Pivot element in its correct position.
+
+- Elements arr[i+2] to arr[high]: Greater than pivot.
+
+Let's sort the following array using Quick Sort:
+
+Initial Array: [10, 7, 8, 9, 1, 5]
+
+Step 1: Initial Call
+
+- Function Call: quick_sort(arr, low, high) where low = 0 and high = 5.
+
+Step 2: Choose Pivot
+
+- Let's choose the last element as the pivot.
+
+- Pivot: 5
+
+Step 3: Partitioning
+
+- Initialize Pointers:
+
+    - i = -1 (one less than low)
+
+    - j will traverse from low to high - 1
+
+- Process:
+
+    - For j = 0:
+
+        - Compare arr[0] (10) with pivot (5):
+
+            - Since 10 > 5, do nothing.
+
+    - For j = 1:
+
+        - Compare arr[1] (7) with pivot (5):
+
+            - Since 7 > 5, do nothing.
+
+    - For j = 2:
+
+        - Compare arr[2] (8) with pivot (5):
+
+        - Since 8 > 5, do nothing.
+
+    - For j = 3:
+
+        - Compare arr[3] (9) with pivot (5):
+
+            - Since 9 > 5, do nothing.
+    - For j = 4:
+
+        - Compare arr[4] (1) with pivot (5):
+
+            - Since 1 < 5, increment i to 0 and swap arr[i] with arr[j]:
+
+                - Swap arr[0] (10) with arr[4] (1)
+
+                - Array after swap: [1, 7, 8, 9, 10, 5]
+
+- Place Pivot in Correct Position:
+
+    - Swap arr[i+1] with pivot:
+
+        - Swap arr[1] (7) with arr[5] (5)
+
+        - Array after swap: [1, 5, 8, 9, 10, 7]
+
+    - Pivot Index: 1
+
+Step 4: Recursive Calls
+
+- Left Sub-Array (low = 0, high = pivot_index - 1 = 0):
+
+    - Contains [1], which is a single-element array and considered sorted.
+
+- Right Sub-Array (low = pivot_index + 1 = 2, high = 5):
+
+    - Contains [8, 9, 10, 7]
+
+Step 5: Sorting the Right Sub-Array
+
+- Choose Pivot: Last element 7
+
+- Partitioning:
+
+    - i = 1
+
+    - For j = 2:
+
+        - Compare arr[2] (8) with pivot (7):
+
+            - Since 8 > 7, do nothing.
+
+    - For j = 3:
+
+        - Compare arr[3] (9) with pivot (7):
+
+            - Since 9 > 7, do nothing.
+
+    - For j = 4:
+
+        - Compare arr[4] (10) with pivot (7):
+
+            - Since 10 > 7, do nothing.
+
+- Place Pivot in Correct Position:
+
+    - Swap arr[i+1] with pivot:
+
+        - Swap arr[2] (8) with arr[5] (7)
+
+        - Array after swap: [1, 5, 7, 9, 10, 8]
+
+- Pivot Index: 2
+
+Step 6: Further Recursive Calls
+
+- Left Sub-Array (low = 2, high = 1):
+
+    - Empty sub-array; no action needed.
+
+- Right Sub-Array (low = 3, high = 5):
+
+    - Contains [9, 10, 8]
+
+Step 7: Sorting [9, 10, 8]
+
+- Choose Pivot: Last element 8
+
+- Partitioning:
+
+    - i = 2
+
+    - For j = 3:
+
+        - Compare arr[3] (9) with pivot (8):
+
+            - Since 9 > 8, do nothing.
+
+    - For j = 4:
+
+        - Compare arr[4] (10) with pivot (8):
+
+            - Since 10 > 8, do nothing.
+
+- Place Pivot in Correct Position:
+
+    - Swap arr[i+1] with pivot:
+
+        - Swap arr[3] (9) with arr[5] (8)
+
+        - Array after swap: [1, 5, 7, 8, 10, 9]
+
+    - Pivot Index: 3
+
+Step 8: Final Recursive Calls
+
+- Left Sub-Array (low = 3, high = 2):
+
+    - Empty sub-array; no action needed.
+
+- Right Sub-Array (low = 4, high = 5):
+
+    - Contains [10, 9]
+
+Step 9: Sorting [10, 9]
+
+- Choose Pivot: Last element 9
+
+- Partitioning:
+
+    - i = 3
+
+    - For j = 4:
+
+        - Compare arr[4] (10) with pivot (9):
+
+            - Since 10 > 9, do nothing.
+
+- Place Pivot in Correct Position:
+
+    - Swap arr[i+1] with pivot:
+
+        - Swap arr[4] (10) with arr[5] (9)
+
+        - Array after swap: [1, 5, 7, 8, 9, 10]
+
+    - Pivot Index: 4
+
+Step 10: Final Array
+
+- All sub-arrays are of size one or zero; recursion ends.
+
+- Sorted Array: [1, 5, 7, 8, 9, 10]
+
+#### Characteristics of Quick Sort
+
+- General-Purpose Sorting:
+
+    - Suitable for large datasets where average performance is acceptable.
+
+- Systems Programming:
+
+    - Often used in systems where memory space is limited.
+
+- Optimized Libraries:
+
+    - Many standard libraries use quick sort or its variants due to its speed and efficiency.
+
 
 ## Hashing
 
