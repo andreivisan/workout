@@ -4,8 +4,6 @@
 
 ### Dynamic Arrays
 
-A dynamic array is a data structure that provides a way to store elements in a contiguous block of memory but can resize itself to accommodate new elements. This flexibility in size makes dynamic arrays more versatile than static arrays, which have a fixed size.
-
 #### Key Characteristics
 
 1. Contiguous Memory: Elements are stored in contiguous memory locations, allowing for efficient access by index.
@@ -777,6 +775,7 @@ Let's break down the steps:
     - For each element from low to high - 1, do the following:
 
         - If arr[j] <= pivot:
+
             - Increment i by 1 (i += 1).
             
             - Swap arr[i] with arr[j].
@@ -1025,6 +1024,8 @@ Step 10: Final Array
 - Optimized Libraries:
 
     - Many standard libraries use quick sort or its variants due to its speed and efficiency.
+
+[Quick Sort](quick_sort.py)
 
 
 ## Hashing
