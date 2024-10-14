@@ -1027,6 +1027,148 @@ Step 10: Final Array
 
 [Quick Sort](quick_sort.py)
 
+### Bucket Sort
+
+#### What Is Quick Sort?
+
+Bucket Sort is a sorting algorithm that distributes elements into several groups called buckets. Each bucket is then sorted individually, either using a different sorting algorithm or by applying the bucket sort algorithm recursively. After sorting, the contents of the buckets are concatenated to form the final sorted array.
+
+#### How Does Quick Sort Work?
+
+High-Level Steps:
+
+1. Create Buckets:
+
+    - Decide on the number of buckets.
+
+    - Initialize each bucket (usually as an empty list or array).
+
+2. Distribute Elements:
+
+    - Use a mapping function to assign each element to the appropriate bucket.
+
+    - Place the element into the corresponding bucket.
+
+3. Sort Individual Buckets:
+
+    - Sort each bucket using a suitable sorting algorithm.
+
+4. Concatenate Buckets:
+
+    - Merge the sorted buckets to form the final sorted array.
+
+#### Example Walkthrough
+
+Input Array:
+
+```
+[0.78, 0.17, 0.39, 0.26, 0.72, 0.94, 0.21, 0.12, 0.23, 0.68]
+```
+
+Assumptions:
+
+- All elements are in the range [0, 1).
+
+- Number of buckets (n) equals the number of elements (10).
+
+Step 1: Creating Buckets
+
+Initialize 10 empty buckets:
+
+```
+buckets = [[], [], [], [], [], [], [], [], [], []]
+```
+
+Step 2: Distributing Elements
+
+- For each element value, compute bucket_index = int(n * value).
+
+- Place the element into buckets[bucket_index].
+
+![table](docs/img/bucket_sort.png)
+
+Step 3: Sorting Individual Buckets
+
+- Bucket 0: Empty.
+
+- Bucket 1: [0.17, 0.12] → Sorted: [0.12, 0.17]
+
+- Bucket 2: [0.26, 0.21, 0.23] → Sorted: [0.21, 0.23, 0.26]
+
+- Bucket 3: [0.39] → No sorting needed.
+
+- Bucket 4: Empty.
+
+- Bucket 5: Empty.
+
+- Bucket 6: [0.68] → No sorting needed.
+
+- Bucket 7: [0.78, 0.72] → Sorted: [0.72, 0.78]
+
+- Bucket 8: Empty.
+
+- Bucket 9: [0.94] → No sorting needed.
+
+Step 4: Concatenating Buckets
+
+- Final Sorted Array:
+
+```
+[0.12, 0.17, 0.21, 0.23, 0.26, 0.39, 0.68, 0.72, 0.78, 0.94]
+```
+
+#### Characteristics of Quick Sort
+
+##### Applicability of Bucket Sort to Different Ranges
+
+Key Factors for Effective Bucket Sort:
+
+1. Known Data Range:
+
+    - The range of the input data should be known in advance.
+
+    - This allows for appropriate bucket allocation and distribution.
+
+2. Uniform Distribution:
+
+    - The data should be approximately uniformly distributed across the range.
+
+    - This ensures that elements are evenly spread across the buckets, preventing clustering in a few buckets.
+
+3. Appropriate Mapping Function:
+
+    - A function that accurately assigns elements to buckets based on their values.
+
+    - The mapping function can be adjusted to accommodate different ranges.
+
+##### When Bucket Sort May Be Less Optimal
+
+Non-Uniform Distribution:
+
+- If the data is not uniformly distributed, some buckets may end up with many elements while others have few or none.
+
+- This can lead to inefficiencies, as some buckets may take longer to sort.
+
+Large Data Range with Sparse Data:
+
+- When the data range is large but the actual data points are sparse, allocating buckets for the entire range may be inefficient in terms of space.
+
+Data with No Natural Ordering:
+
+- For data types without a natural numerical ordering or when it's difficult to define a mapping function, Bucket Sort may not be suitable.
+
+##### Conclusion
+
+Bucket Sort is most efficient when:
+
+- The data range is known and manageable.
+
+- The data is uniformly distributed.
+
+- An appropriate mapping function can be defined to distribute elements evenly across buckets.
+
+[Bucket Sort](bucket_sort.py)
+
 
 ## Hashing
 
