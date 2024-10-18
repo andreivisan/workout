@@ -725,6 +725,7 @@ Final Sorted Array: [3, 9, 10, 27, 38, 43, 82]
     - Unlike some other algorithms, Merge Sort's performance doesn't degrade with certain input patterns.
 
 [Merge Sort](merge_sort.py)
+[Merge K Sorted Lists](merge_k_sorted_lists.py)
 
 ### Quick Sort
 
