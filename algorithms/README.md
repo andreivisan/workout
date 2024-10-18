@@ -1169,6 +1169,7 @@ Bucket Sort is most efficient when:
 - An appropriate mapping function can be defined to distribute elements evenly across buckets.
 
 [Bucket Sort](bucket_sort.py)
+[Sort Colors](sort_colors.py)
 
 
 ## Hashing
