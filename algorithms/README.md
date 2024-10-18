@@ -57,6 +57,8 @@
 4. Repeat: Repeat steps 2 and 3 until the low pointer is greater than the high pointer.
 
 [Binary Search](binary_search.py)
+[Search 2D Matrix](search_2d_matrix.py)
+
 
 ### Two Pointers
 
