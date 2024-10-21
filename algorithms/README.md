@@ -287,29 +287,6 @@ Queues can be implemented using:
 [Stack Using Queues](stack_using_queues.py)
 
 
-## Sorting
-
-### Bubble Sort
-
-#### Steps of Bubble Sort
-
-1. Start at the beginning of the list.
-
-2. Compare the first two elements:
-
-    * If the first element is greater than the second element, swap them.
-
-3. Move to the next pair of elements, compare them, and swap if necessary.
-
-4. Continue this process for each pair of adjacent elements to the end of the list. This completes one pass.
-
-5. Repeat the process for the entire list for (n-1) passes (where n is the number of elements in the list). With each pass, the largest element "bubbles up" to its correct position, reducing the number of elements to be compared in subsequent passes.
-
-6. End the process when no swaps are needed in a pass, indicating that the list is sorted.
-
-[Bubble Sort](bubble_sort.py)
-
-
 ## Recursion
 
 #### Intro
@@ -391,6 +368,27 @@ The easiest way to understand is by using a decision tree
 
 
 ## Sorting
+
+### Bubble Sort
+
+#### Steps of Bubble Sort
+
+1. Start at the beginning of the list.
+
+2. Compare the first two elements:
+
+    * If the first element is greater than the second element, swap them.
+
+3. Move to the next pair of elements, compare them, and swap if necessary.
+
+4. Continue this process for each pair of adjacent elements to the end of the list. This completes one pass.
+
+5. Repeat the process for the entire list for (n-1) passes (where n is the number of elements in the list). With each pass, the largest element "bubbles up" to its correct position, reducing the number of elements to be compared in subsequent passes.
+
+6. End the process when no swaps are needed in a pass, indicating that the list is sorted.
+
+[Bubble Sort](bubble_sort.py)
+
 
 ### Insertion Sort
 
