@@ -2,7 +2,7 @@
 
 ## About
 
-Just as I like to be in perfect physical shape to be able to function at my highest potential, I want to keep my coding skills sharp and improve on existing skills or create new ones.
+Just as I like to be in good physical shape to be able to function at my highest potential, I want to keep my coding skills sharp and improve on existing skills or create new ones.
 
 ## AOC 2023 Python
 
