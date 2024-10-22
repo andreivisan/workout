@@ -192,6 +192,8 @@ Singly linked lists are foundational data structures used in various application
 
 [Merge Two Sorted Linked Lists](merge_2_sorted_lists.py)
 
+[Remove nth Node from End of Singly Linked List](remove_nth_node_from_end_sll.py)
+
 
 ## Doubly Linked Lists
 
