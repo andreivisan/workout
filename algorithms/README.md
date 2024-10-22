@@ -1174,6 +1174,88 @@ Bucket Sort is most efficient when:
 [Sort Colors](sort_colors.py)
 
 
+## Trees
+
+### Binary Trees
+
+#### Definition
+
+A binary tree is a hierarchical data structure in which each node has at most two children, referred to as the left child and the right child.
+
+### Binary Search Trees
+
+#### Definition
+
+A binary search tree is a binary tree with the following properties:
+
+1. Node Ordering: For each node:
+    - All nodes in its left subtree have values less than the node's value.
+    - All nodes in its right subtree have values greater than the node's value.
+2. No Duplicate Values: Each value appears only once.
+
+#### Properties
+
+- Efficient Search: Allows for efficient searching, insertion, and deletion operations.
+- In-order Traversal: Produces the values in sorted order.
+
+#### Operations on BST
+
+##### Insertion
+Goal: Add a new node while maintaining the BST properties.
+
+Algorithm:
+
+1. Start at the Root:
+    - Compare the value to insert with the current node's value.
+2. Traverse the Tree:
+    - If the value is less, move to the left child.
+    - If the value is greater, move to the right child.
+3. Find the Correct Position:
+    - Repeat the comparison until reaching a null position where the node can be inserted.
+
+##### Deletion
+Goal: Remove a node while maintaining the BST properties.
+
+Cases:
+1. Node is a Leaf:
+    - Simply remove the node.
+2. Node has One Child:
+    - Replace the node with its child.
+3. Node has Two Children:
+    - Find the in-order successor (smallest value in the right subtree) or in-order predecessor (largest value in the left subtree).
+    - Replace the node's value with the successor's value.
+    - Delete the successor node.
+
+#### Traversal Algorithmss
+
+**Depth-First Search (DFS)**
+
+DFS explores as far as possible along each branch before backtracking.
+
+##### Types of DFS Traversal
+
+1. In-order Traversal (Left, Root, Right):
+    - For BSTs, results in nodes being visited in ascending order.
+2. Pre-order Traversal (Root, Left, Right):
+    - Useful for copying a tree.
+3. Post-order Traversal (Left, Right, Root):
+    - Useful for deleting a tree.
+
+**Breadth-First Search (BFS)**
+
+BFS visits all the nodes at the present depth before moving on to the nodes at the next depth level.
+
+Level-Order Traversal
+
+Algorithm:
+1. Use a Queue:
+    - Start by enqueuing the root node.
+2. Process Nodes Level by Level:
+    - Dequeue a node, process it, and enqueue its children.
+
+#### Using BSTs for Sets and Maps
+
+
 ## Hashing
 
 Hashing is a fundamental concept in computer science, used extensively for data storage and retrieval. At a lower level, hashing involves intricate memory management and data manipulation. Let's delve into what happens in memory when hashing is implemented.
