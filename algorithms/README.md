@@ -1255,6 +1255,52 @@ Algorithm:
 
 #### Using BSTs for Sets and Maps
 
+**BST as a Set**
+
+- Set Operations:
+    - Insertion: Insert elements while avoiding duplicates.
+    - Deletion: Remove elements.
+    - Membership Test: Check if an element exists.
+
+- Implementation:
+    - Use BST properties to ensure elements are unique and sorted.
+
+**BST as a Map (Dictionary)**
+
+- Map Operations:
+    - Insertion: Insert key-value pairs.
+    - Deletion: Remove key-value pairs.
+    - Lookup: Retrieve the value associated with a key.
+
+- Implementation
+
+```python
+class MapNode:
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+        self.left = None
+        self.right = None
+
+def insert_map(root, key, value):
+    if root is None:
+        return MapNode(key, value)
+    if key < root.key:
+        root.left = insert_map(root.left, key, value)
+    elif key > root.key:
+        root.right = insert_map(root.right, key, value)
+    else:
+        root.value = value  # Update value if key already exists
+    return root
+
+def search_map(root, key):
+    if root is None or root.key == key:
+        return root
+    if key < root.key:
+        return search_map(root.left, key)
+    return search_map(root.right, key)
+```
+
 
 ## Hashing
 
