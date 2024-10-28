@@ -54,6 +54,25 @@ class BST:
             result.append(level_list)
         return result
 
+    def binary_tree_right_side(self, root: Optional[TreeNode]) -> List[list[int]]:
+        if not root:
+            return []
+        q = []
+        result = []
+        q.append(root)
+        while len(q) > 0:
+            level_list = []
+            len_q = len(q)
+            for _ in range(len_q):
+                node = q.pop(0)
+                level_list.append(node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+            result.append(level_list)
+        return [sublist[-1] for sublist in result]
+
     def delete_node(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
         if not root:
             return None
@@ -116,5 +135,5 @@ if __name__ == "__main__":
     inorder = [4, 2, 5, 1, 6, 3, 7]
     bst = BST()
     root = bst.build_tree_from_in_pre_order(preorder, inorder)
-    bst.bfs(root)
+    print(bst.binary_tree_right_side(root))
     
