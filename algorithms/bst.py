@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import queue
 from typing import List, Optional
 
 class TreeNode:
@@ -33,6 +34,25 @@ class BST:
         return (self.dfs_inorder(root.left) +
         [root.val] +
         self.dfs_inorder(root.right))
+
+    def bfs(self, root: Optional[TreeNode]) -> List[list[int]]:
+        if not root:
+            return []
+        q = []
+        result = []
+        q.append(root)
+        while len(q) > 0:
+            level_list = []
+            len_q = len(q)
+            for _ in range(len_q):
+                node = q.pop(0)
+                level_list.append(node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+            result.append(level_list)
+        return result
 
     def delete_node(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
         if not root:
@@ -92,8 +112,9 @@ class BST:
 
 
 if __name__ == "__main__":
-    preorder = [7, 4, 3, 2, 1, 11, 9, 25, 29]
-    inorder = [1, 2, 3, 4, 7, 9, 11, 25, 29]
+    preorder = [1, 2, 4, 5, 3, 6, 7]
+    inorder = [4, 2, 5, 1, 6, 3, 7]
     bst = BST()
     root = bst.build_tree_from_in_pre_order(preorder, inorder)
+    bst.bfs(root)
     
