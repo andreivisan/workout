@@ -72,6 +72,13 @@ class BST:
             self.result = node.val
             return
         self._inorder_traversal(node.right)
+
+    def search_bst(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+        if root is None or root.val == val:
+            return root
+        if val < root.val:
+            return self.search_bst(root.left, val)
+        return self.search_bst(root.right, val)
     
     # this builds a binary tree not a BST
     def build_tree_from_in_pre_order(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
