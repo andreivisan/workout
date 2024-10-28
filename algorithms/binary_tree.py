@@ -9,11 +9,11 @@ class TreeNode:
         self.left = left
         self.right = right
 
-class BST:
+class BinaryTree:
     def __init__(self, root: TreeNode = None):
         self.root = root
 
-    def insert(self, root: Optional[TreeNode], item: int) -> Optional[TreeNode]:
+    def insert_bst(self, root: Optional[TreeNode], item: int) -> Optional[TreeNode]:
         if root is None:
             return TreeNode(item)
         if root.val >= item:
@@ -133,7 +133,7 @@ class BST:
 if __name__ == "__main__":
     preorder = [1, 2, 4, 5, 3, 6, 7]
     inorder = [4, 2, 5, 1, 6, 3, 7]
-    bst = BST()
+    bst = BinaryTree()
     root = bst.build_tree_from_in_pre_order(preorder, inorder)
     print(bst.binary_tree_right_side(root))
     
