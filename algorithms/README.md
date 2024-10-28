@@ -1300,7 +1300,7 @@ def search_map(root, key):
         return search_map(root.left, key)
     return search_map(root.right, key)
 ```
-[BST](bst.py)
+[Binary Trees and BST](binary_tree.py)
 
 
 ## Hashing
