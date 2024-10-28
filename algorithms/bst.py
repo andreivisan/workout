@@ -72,7 +72,21 @@ class BST:
             self.result = node.val
             return
         self._inorder_traversal(node.right)
+    
+    # this builds a binary tree not a BST
+    def build_tree_from_in_pre_order(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        if len(preorder) == 0 and len(inorder) == 0:
+            return None
+        root = TreeNode(preorder[0])
+        root_position_inorder = inorder.index(root.val)
+        root.left = self.build_tree_from_in_pre_order(preorder[1:root_position_inorder+1], inorder[:root_position_inorder])
+        root.right = self.build_tree_from_in_pre_order(preorder[root_position_inorder+1:], inorder[root_position_inorder+1:])
+        return root
 
-                
-        
 
+if __name__ == "__main__":
+    preorder = [7, 4, 3, 2, 1, 11, 9, 25, 29]
+    inorder = [1, 2, 3, 4, 7, 9, 11, 25, 29]
+    bst = BST()
+    root = bst.build_tree_from_in_pre_order(preorder, inorder)
+    
