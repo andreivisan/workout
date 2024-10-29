@@ -1303,6 +1303,41 @@ def search_map(root, key):
 [Binary Trees and BST](binary_tree.py)
 
 
+## Backtracking
+
+Backtracking is a general algorithmic technique that incrementally builds candidates to the solutions and abandons a candidate ("backtracks") as soon as it determines that this candidate cannot possibly lead to a valid solution. It's widely used for solving combinatorial and constraint satisfaction problems, such as puzzles, games, and optimization tasks.
+
+### Core Concept
+
+At its essence, backtracking is a depth-first search (DFS) over the solution space. It systematically searches for a solution by trying out possible partial solutions and discarding them if they do not satisfy the problem's constraints.
+
+### How Backtracking Works
+
+1. Start with an Empty Solution:
+
+    - Begin by considering an empty solution and attempt to build a full solution incrementally.
+
+2. Incrementally Build Candidates:
+
+    - At each step, add a piece to the partial solution, aiming to reach a complete solution.
+
+3. Constraint Checking:
+
+    - After adding a new piece, check if the partial solution is still valid.
+
+    - If it violates any constraints, discard the last added piece (backtrack) and try a different option.
+
+4. Recursive Exploration:
+
+    - Use recursion to explore all possible options from the current state.
+
+5. Backtracking:
+
+    - If no valid piece can be added at the current step, remove the last piece and backtrack to the previous step to try alternative options.
+
+
+
+
 ## Hashing
 
 Hashing is a fundamental concept in computer science, used extensively for data storage and retrieval. At a lower level, hashing involves intricate memory management and data manipulation. Let's delve into what happens in memory when hashing is implemented.
