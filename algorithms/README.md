@@ -1335,7 +1335,31 @@ At its essence, backtracking is a depth-first search (DFS) over the solution spa
 
     - If no valid piece can be added at the current step, remove the last piece and backtrack to the previous step to try alternative options.
 
+### 3 keys to Backtracking
 
+1. Choices
+
+You have decisions you can choose from.
+
+2. Constraints
+
+Your decisions are constrained somehow.
+
+3. Goals
+
+The Goal of the problem.
+
+```c
+void Backtrack(res, args)
+    if (GOAL REACHED)
+        add solution to res
+        return
+    for (int i = 0; i < NB_CHOICES; i++)
+        if (CHOICES[i] is valid)
+            make choices[i]
+            Backtrack(res, args)
+            undo choices[i]
+```
 
 
 ## Hashing
