@@ -1,30 +1,31 @@
 #!/usr/bin/env python3
-
+ 
 from typing import List
 
-def n_queens(n: int) -> List[List[str]]:
-    return backtrack(n, [], [])
+def solve_n_quees(n: int) -> List[List[int]]:
+    cols = set()
+    # right up
+    ru_diag = set()
+    # right down
+    rd_diag = set()
+    res = []
+    board = [['.'] * n for i in range(n)]
 
-def backtrack(n: int, row: List[str], board: List[List[str]]) -> List[List[str]]:
-    if len(board) == n:
-        return board
-    
-    if len(row) == n:
-        board.append(row)
-        return board   
-
-    for i in range(n):
-        if is_valid(n, i, board):
-            row[i] = 'Q'
-            backtrack(n, row, board)
-            row[i] = '.'
-        else:
-            row[i] = '.'
-
-def is_valid(n: int, pos: int, board: List[List[str]]) -> bool:
-    if not board:
-        return True
-    for i in range(n):
-        if board[i] and board[i][pos]:
-            return False
-        
+    def backtrack(row):
+        if row == n:
+            board_copy = ["".join(row) for row in board]
+            res.append(board_copy)
+        for col in range(n):
+            if col in cols or (row + col) in ru_diag or (row - col) in rd_diag:
+                continue
+            board[row][col] = "Q"
+            cols.add(col)
+            ru_diag.add(row + col)
+            rd_diag.add(row - col)
+            backtrack(row + 1)
+            cols.remove(col)
+            ru_diag.remove(row + col)
+            rd_diag.remove(row - col)
+            board[row][col] = "."
+    backtrack(0)
+    return res

@@ -1360,6 +1360,7 @@ void Backtrack(res, args)
             Backtrack(res, args)
             undo choices[i]
 ```
+[N Queens](n_queens.py)
 
 
 ## Hashing
